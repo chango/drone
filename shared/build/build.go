@@ -186,7 +186,7 @@ func (b *Builder) setup() error {
 
 			// Get the image if it doesn't exist
 			if err := b.dockerClient.Images.Pull(cname, b.Build.Docker.AuthConfig()); err != nil {
-				return fmt.Errorf("Error: Unable to pull image %s", cname)
+				return fmt.Errorf("Error: Unable to pull image %s: %s", cname, err)
 			}
 
 			img, err = b.dockerClient.Images.Inspect(cname)
